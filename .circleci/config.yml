@@ -211,7 +211,6 @@ jobs:
     docker:
       # Docker image here that supports NodeJS
       - image: circleci/node:13.8.0
-      - image: amazon/aws-cli
     steps:
       # Checkout code from git
       - checkout
