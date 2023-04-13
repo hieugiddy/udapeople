@@ -222,7 +222,7 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            touch .env
+            touch a.txt
             echo TYPEORM_CONNECTION=postgres >> "a.txt"
             echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "a.txt"
             echo TYPEORM_MIGRATIONS=./src/migrations/*.ts >> "a.txt"
@@ -233,7 +233,7 @@ jobs:
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "a.txt"
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "a.txt"
             
-            cat .txt
+            cat a.txt
             
             npm install
             npm run migrations > migrations_dump.txt
@@ -398,6 +398,7 @@ jobs:
 workflows:
   default:
     jobs:
+      - run-migrations
       - build-frontend
       - build-backend
       - test-frontend:
@@ -415,8 +416,8 @@ workflows:
               only: [main]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
-      - run-migrations:
-          requires: [configure-infrastructure]
+     # - run-migrations:
+      #    requires: [configure-infrastructure]
       - deploy-frontend:
           requires: [run-migrations]
       - deploy-backend:
