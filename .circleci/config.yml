@@ -239,11 +239,11 @@ jobs:
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> ".env"
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> ".env"
             
-            echo TYPEORM_HOST
-            echo TYPEORM_PORT
-            echo TYPEORM_USERNAME
-            echo TYPEORM_PASSWORD
-            echo TYPEORM_DATABASE
+            echo $TYPEORM_HOST
+            echo $TYPEORM_PORT
+            echo $TYPEORM_USERNAME
+            echo $TYPEORM_PASSWORD
+            echo $TYPEORM_DATABASE
             
             npm install
             npm run migrations > migrations_dump.txt
