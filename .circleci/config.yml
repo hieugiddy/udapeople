@@ -190,8 +190,8 @@ jobs:
          fingerprints:
             - "ce:3a:b9:54:49:3a:87:37:3f:9a:45:17:9a:cc:66:46"
       # attach workspace
-      #- attach_workspace:
-        #  at: ~/
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install dependencies
           command: |
@@ -213,16 +213,16 @@ jobs:
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> backend/.env
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> backend/.env
             cat backend/.env
+            ls -al
             
             cd .circleci/ansible
-            ls -al
             ansible-playbook -i inventory.txt configure-server.yml
           no_output_timeout: 30m
       # Here's where you will add some code to rollback on failure
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/backend
+            - backend
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}  
   run-migrations:
