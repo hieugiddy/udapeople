@@ -221,18 +221,6 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            touch a.txt
-            echo TYPEORM_CONNECTION=postgres >> "a.txt"
-            echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "a.txt"
-            echo TYPEORM_MIGRATIONS=./src/migrations/*.ts >> "a.txt"
-            echo TYPEORM_MIGRATIONS_DIR=./src/migrations >> "a.txt"
-            echo TYPEORM_HOST=$TYPEORM_HOST >> "a.txt"
-            echo TYPEORM_PORT=$TYPEORM_PORT >> "a.txt"
-            echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> "a.txt"
-            echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "a.txt"
-            echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "a.txt"
-            
-            cat a.txt
             
             npm install
             npm run migrations > migrations_dump.txt
