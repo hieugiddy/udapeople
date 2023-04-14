@@ -236,7 +236,7 @@ jobs:
             echo TYPEORM_USERNAME=postgres >> ".env"
             echo TYPEORM_PASSWORD=12345678 >> ".env"
             echo TYPEORM_DATABASE=postgres >> ".env"
-            c
+            
             ls -al
             npm install
             npm run migrations > migrations_dump.txt
